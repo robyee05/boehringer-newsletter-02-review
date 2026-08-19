@@ -1,0 +1,943 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Több mint glikémiás kontroll — Boehringer Ingelheim</title>
+    <style>
+      :root {
+        --ink: #0b2e28;
+        --deep: #08211d;
+        --lime: #5be37b;
+        --lime-deep: #33c85e;
+        --mint-pale: #e6f8ec;
+        --coral: #ff6b57;
+        --coral-pale: #ffe4de;
+        --sky: #4ea8e0;
+        --sky-pale: #dcf0fb;
+        --amber: #ffcf3f;
+        --amber-pale: #fff3cf;
+        --paper: #f7f5ef;
+        --card: #ffffff;
+        --text: #12241f;
+        --text-soft: #4b5f59;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background: var(--paper);
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Helvetica,
+          Arial,
+          sans-serif;
+        color: var(--text);
+        display: flex;
+        justify-content: center;
+        padding: 32px 16px;
+      }
+
+      .sheet {
+        width: 100%;
+        max-width: 680px;
+        background: var(--card);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 30px 60px -20px rgba(8, 33, 29, 0.25);
+      }
+
+      /* HEADER */
+      header {
+        background: var(--deep);
+        padding: 28px 36px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        color: #fff;
+      }
+      .logo svg {
+        width: 168px;
+        height: auto;
+        flex-shrink: 0;
+      }
+      .part-tag {
+        color: #08312a;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        background: rgba(91, 227, 123, 0.14);
+        padding: 6px 12px;
+        border-radius: 20px;
+        white-space: nowrap;
+      }
+
+      /* BODY */
+      .body-pad {
+        padding: 36px 36px 8px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        font-family: "BoehringerForwardHead", Arial, Helvetica, sans-serif;
+        align-items: center;
+        gap: 8px;
+        background: #00e47c;
+        color: #08312a;
+        font-weight: 800;
+        font-size: 18px;
+        letter-spacing: 0.05em;
+        padding: 8px 16px;
+        border-radius: 18px 0 18px 0;
+        margin-bottom: 24px;
+      }
+
+      .readtime {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        color: var(--text-soft);
+        background: var(--mint-pale);
+        padding: 6px 14px;
+        border-radius: 20px;
+        margin-bottom: 22px;
+        font-weight: 600;
+      }
+
+      h1 {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 31px;
+        line-height: 1.18;
+        color: #00e47c;
+        margin: 0 0 20px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+
+      p {
+        font-size: 15.5px;
+        line-height: 1.62;
+        color: var(--text);
+        margin: 0 0 16px;
+      }
+
+      .hl {
+        border-top: 2px solid #a3e5ee;
+        border-bottom: 2px solid #a3e5ee;
+        padding: 7px 2px 9px;
+        margin: 20px 0;
+        font-family: "BoehringerForwardHead", Arial, Helvetica, sans-serif;
+        font-size: 15px;
+        line-height: 1.15;
+        font-weight: 700;
+      }
+
+      .hlp {
+        color: #08312a;
+        margin-bottom: 0;
+        text-align: justify;
+        font-size: 18px;
+      }
+
+      h2.section-title {
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: #fff;
+        background: var(--lime-deep);
+        display: inline-block;
+        padding: 9px 16px;
+        border-radius: 8px;
+        margin: 30px 0 16px;
+      }
+
+      /* PATIENT CARD */
+      .patient-card {
+        background: var(--mint-pale);
+        border: 1px solid #c9ecd6;
+        border-left: 6px solid var(--lime-deep);
+        border-radius: 12px;
+        padding: 20px 22px;
+      }
+
+      .patient-card p {
+        margin: 0;
+        font-size: 15px;
+      }
+      .patient-card b {
+        color: var(--deep);
+      }
+
+      .stat-row {
+        display: flex;
+        gap: 10px;
+        margin-top: 14px;
+        flex-wrap: wrap;
+      }
+      .stat-chip {
+        background: var(--deep);
+        color: #fff;
+        border-radius: 10px;
+        padding: 10px 14px;
+        flex: 1;
+        min-width: 118px;
+      }
+      .stat-chip .num {
+        font-size: 19px;
+        font-weight: 800;
+        color: var(--lime);
+        display: block;
+        line-height: 1.1;
+      }
+      .stat-chip .lab {
+        font-size: 10.5px;
+        color: #bcd6cc;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        font-weight: 700;
+      }
+
+      /* BENEFIT BOX */
+      .benefit-box {
+        background: var(--ink);
+        border-radius: 16px;
+        padding: 26px 26px 10px;
+        margin: 24px 0;
+      }
+      .benefit-box .box-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+        font-weight: 800;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        color: var(--lime);
+        margin-bottom: 18px;
+      }
+      .icon-badge {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        font-size: 17px;
+      }
+      .icon-badge.shield {
+        background: var(--lime);
+        color: var(--deep);
+      }
+      .icon-badge.heart {
+        background: var(--coral);
+        color: #fff;
+      }
+      .icon-badge.kidney {
+        background: var(--sky);
+        color: #fff;
+      }
+      .icon-badge.check {
+        background: var(--amber);
+        color: var(--deep);
+      }
+
+      .benefit-item {
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+        padding-bottom: 18px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        margin-bottom: 18px;
+      }
+      .benefit-item:last-child {
+        border-bottom: none;
+        margin-bottom: 6px;
+        padding-bottom: 6px;
+      }
+      .benefit-item p {
+        color: #e9f3ef;
+        font-size: 14.5px;
+        margin: 0;
+      }
+      .benefit-item p b {
+        color: #fff;
+      }
+
+      .lead-line {
+        background: #d2f2f7;
+        border-radius: 12px;
+        padding: 16px 20px;
+        font-size: 15px;
+        margin: 24px 0;
+        border-left: 5px solid var(--sky);
+      }
+      .lead-line p {
+        margin: 0;
+        color: var(--deep);
+      }
+
+      /* WARNING BOX */
+      .warn-box {
+        background: var(--coral-pale);
+        border: 2px solid var(--coral);
+        border-radius: 16px;
+        padding: 24px 26px 8px;
+        margin: 24px 0;
+      }
+      .warn-box .box-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+        font-weight: 800;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        color: #c73b26;
+        margin-bottom: 16px;
+      }
+      .warn-icon {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: var(--coral);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 900;
+        font-size: 15px;
+        flex-shrink: 0;
+      }
+      .warn-item {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        margin-bottom: 16px;
+      }
+      .warn-item p {
+        margin: 0;
+        font-size: 14.5px;
+        color: #5c2317;
+      }
+
+      /* FLOWCHART */
+      .flow-wrap {
+        background: var(--deep);
+        border-radius: 18px;
+        padding: 32px 26px;
+        margin: 0;
+      }
+      .flow-pill {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        color: #dcefe6;
+        font-size: 13px;
+        font-weight: 600;
+        text-align: center;
+        padding: 12px 18px;
+        border-radius: 24px;
+        margin: 0 auto 6px;
+        max-width: 340px;
+      }
+      .flow-arrow {
+        text-align: center;
+        color: var(--lime);
+        font-size: 22px;
+        line-height: 1;
+        margin: 2px 0 10px;
+      }
+      .flow-decision {
+        background: var(--lime);
+        color: var(--deep);
+        text-align: center;
+        font-weight: 800;
+        font-size: 14.5px;
+        padding: 14px 18px;
+        border-radius: 10px;
+        max-width: 300px;
+        margin: 0 auto 22px;
+      }
+      .flow-split {
+        display: block;
+        margin: 0 auto 14px;
+        width: 100%;
+        max-width: 360px;
+        height: 46px;
+      }
+      .flow-branches {
+        display: flex;
+        gap: 16px;
+      }
+      .branch {
+        flex: 1;
+        border-radius: 12px;
+        padding: 18px 16px;
+        text-align: center;
+      }
+      .branch.good {
+        background: rgba(91, 227, 123, 0.12);
+        border: 2px solid var(--lime);
+      }
+      .branch.bad {
+        background: rgba(255, 107, 87, 0.14);
+        border: 2px solid var(--coral);
+      }
+      .branch .b-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 10px;
+        font-weight: 900;
+        font-size: 17px;
+      }
+      .branch.good .b-icon {
+        background: var(--lime);
+        color: var(--deep);
+      }
+      .branch.bad .b-icon {
+        background: var(--coral);
+        color: #fff;
+      }
+      .branch .b-label {
+        font-size: 10.5px;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+      }
+      .branch.good .b-label {
+        color: var(--lime);
+      }
+      .branch.bad .b-label {
+        color: var(--coral);
+      }
+      .branch .b-main {
+        color: #fff;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 1.4;
+        margin-bottom: 6px;
+      }
+      .branch .b-sub {
+        color: #b9c9c3;
+        font-size: 12px;
+        line-height: 1.4;
+      }
+      .branch .b-alt {
+        color: var(--amber);
+        font-weight: 700;
+        font-size: 12.5px;
+        margin-top: 6px;
+      }
+
+      /* EDUCATION BOX */
+      .edu-box {
+        background: var(--amber-pale);
+        border-radius: 14px;
+        padding: 20px 22px;
+        margin: 24px 0;
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+        border-left: 5px solid var(--amber);
+      }
+      .edu-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        background: var(--amber);
+        color: var(--deep);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        font-weight: 900;
+      }
+      .edu-box .edu-title {
+        font-size: 11.5px;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: #8a6a05;
+        margin-bottom: 6px;
+      }
+      .edu-box p {
+        font-style: italic;
+        font-size: 14.5px;
+        color: #5c4a10;
+        margin: 0;
+      }
+
+      /* CTA */
+      .cta-wrap {
+        text-align: center;
+        margin: 32px 0 8px;
+      }
+      .cta-btn {
+        display: inline-block;
+        font-family: "BoehringerForwardHead", Arial, Helvetica, sans-serif;
+        background: #00e47c;
+        color: #08312a;
+        font-weight: 800;
+        font-size: 19px;
+        padding: 15px 34px;
+        border-radius: 10px;
+        text-decoration: none;
+        box-shadow: 0 8px 20px -6px rgba(51, 200, 94, 0.55);
+        margin-bottom: 15px;
+      }
+      .cta-link {
+        display: block;
+        text-align: center;
+        margin-top: 14px;
+        font-size: 14px;
+        color: var(--sky);
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .source-note {
+        text-align: center;
+        font-size: 12px;
+        color: var(--text-soft);
+        padding: 26px 36px 30px;
+        border-top: 1px solid #eee;
+        margin-top: 26px;
+        line-height: 1.5;
+      }
+
+      /* FOOTER */
+      footer {
+        background: var(--deep);
+        padding: 32px 36px 34px;
+        color: #cfe3db;
+      }
+      footer .flogo {
+        display: flex;
+        align-items: center;
+        color: #fff;
+        margin-bottom: 18px;
+      }
+      footer .flogo svg {
+        width: 150px;
+        height: auto;
+      }
+      footer p {
+        font-size: 12.5px;
+        line-height: 1.6;
+        margin: 0 0 4px;
+        color: #a9c3ba;
+      }
+      footer a {
+        color: var(--lime);
+        font-size: 12.5px;
+        font-weight: 700;
+        text-decoration: underline;
+        display: inline-block;
+        margin-top: 12px;
+      }
+
+      @font-face {
+        font-family: "BoehringerForwardHead";
+        src:
+          url("font/BoehringerForwardHead.woff2") format("woff2"),
+          url("font/BoehringerForwardHead.woff") format("woff");
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: "BoehringerForwardHead";
+        src:
+          url("font/BoehringerForwardHead-Bd.woff2") format("woff2"),
+          url("font/BoehringerForwardHead-Bd.woff") format("woff");
+        font-weight: 700;
+        font-style: normal;
+      }
+
+      @media (max-width: 480px) {
+        .body-pad {
+          padding: 26px 20px 8px;
+        }
+        header {
+          padding: 20px 20px;
+        }
+        h1 {
+          font-size: 25px;
+        }
+        .flow-branches {
+          flex-direction: column;
+        }
+        .flow-split {
+          height: 30px;
+        }
+        footer {
+          padding: 26px 20px 28px;
+        }
+        .source-note {
+          padding: 22px 20px 26px;
+        }
+        .stat-row {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sheet">
+      <!-- HEADER -->
+      <header>
+        <div class="logo">
+          <img
+            src="images/Boehringer_Logo_RGB_Accent_Green.png"
+            alt="Boehringer Ingelheim"
+            width="168"
+            style="
+              display: block;
+              width: 168px;
+              max-width: 100%;
+              height: auto;
+              border: 0;
+            "
+          />
+        </div>
+      </header>
+
+      <div class="body-pad">
+        <div>
+          <div class="eyebrow">
+            Gyakorlati útmutató az SGLT2-gátlók háziorvosi alkalmazásához
+            <div class="part-tag">2. RÉSZ / 3</div>
+          </div>
+          <p style="margin-bottom: 0">
+            Tisztelt Dr. <%= recipient.firstName><%= recipient.lastName %><br /><br />
+            Ajánljuk figyelmébe Dr. Gulácsi-Bárdos Petra, az Oktató
+            Családorvosok XXVII. Továbbképző Konferenciáján elhangzott
+            előadásának háromrészes összefoglalóját. Bízunk benne, hogy az
+            anyagot hasznosnak, gyakorlatiasnak és a mindennapi betegellátásban
+            jól alkalmazhatónak találja.
+          </p>
+        </div>
+        <br />
+        <div class="readtime">🕒 Olvasási idő: kb. 1,5 perc</div>
+
+        <h1>
+          Több mint glikémiás kontroll: a kardiovaszkuláris és renális
+          szempontok szerepe a terápiaválasztásban
+        </h1>
+
+        <p>
+          A háziorvosi terápiás paletta bővült: a metformin és a szulfanilureák
+          mellett ma már SGLT2- és DPP-4-gátlók is elérhetők.
+        </p>
+
+        <p>
+          <strong>A választásnál nem elég a HbA1c-t nézni</strong> — a beteg
+          kardiovaszkuláris és renalis kockázata is meghatározza, melyik szer a
+          legjobb kombináció.
+        </p>
+
+        <div class="eyebrow" style="margin-top: 4px">
+          Diagnózis a háziorvosi praxisban
+        </div>
+
+        <div class="patient-card">
+          <p>
+            <b>Egy tipikus példa:</b> 62 éves nőbeteg, hypertoniával,
+            dohányzással, 30 kg/m² körüli BMI-vel, jogosítvány-hosszabbítás
+            kapcsán végzett laborvizsgálattal.
+          </p>
+          <div class="stat-row">
+            <div class="stat-chip">
+              <span class="num">7,8 mmol/l</span
+              ><span class="lab">Éhomi vércukor</span>
+            </div>
+            <div class="stat-chip">
+              <span class="num">8,2%</span><span class="lab">HbA1c</span>
+            </div>
+            <div class="stat-chip">
+              <span class="num">74 ml/perc</span
+              ><span class="lab">eGFR / 1,73 m²</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="eyebrow" style="margin: 24px 0 0 0">
+          Mikor előnyös az SGLT2-gátló
+        </div>
+
+        <div class="benefit-box">
+          <div class="benefit-item">
+            <span class="icon-badge heart">♥</span>
+            <p>
+              <b>Szívelégtelenségben</b> — csökkent és megtartott ejekciós
+              frakció esetén is.
+            </p>
+          </div>
+
+          <div class="benefit-item">
+            <span class="icon-badge kidney">◐</span>
+            <p>
+              <b>Krónikus vesebetegségben</b>, különösen albuminuria mellett —
+              lassíthatja a vesefunkció-romlást.
+            </p>
+          </div>
+
+          <div class="benefit-item">
+            <span class="icon-badge heart">♥</span>
+            <p>
+              Magas kardiovaszkuláris kockázatú betegeknél előnyösebb lehet,
+              mint a pusztán glikémiás hatású szerek.
+            </p>
+          </div>
+
+          <div class="benefit-item">
+            <span class="icon-badge check">✓</span>
+            <p>
+              Túlsúlyos / obes betegeknél a kedvező testsúlyhatás is szempont.
+            </p>
+          </div>
+        </div>
+
+        <div class="hl">
+          <p class="hlp">
+            A fenti beteg esetében a metformin és SGLT2-gátló kombinációja
+            szakmailag jól indokolható kezdőterápia.
+          </p>
+        </div>
+
+        <div class="warn-box">
+          <div class="box-title">
+            <span class="warn-icon">!</span>
+            Mikor ne adjunk SGLT2-gátlót
+          </div>
+
+          <div class="warn-item">
+            <span class="warn-icon">✕</span>
+            <p>
+              1-es típusú diabetesben (ketoacidosis-kockázat) és igen alacsony
+              saját inzulintermelés esetén.
+            </p>
+          </div>
+
+          <div class="warn-item">
+            <span class="warn-icon">✕</span>
+            <p>
+              Új kezelés indításakor, ha eGFR &lt; 20 ml/perc (empagliflozin)
+              vagy &lt; 25 ml/perc (dapagliflozin).
+            </p>
+          </div>
+
+          <div class="warn-item">
+            <span class="warn-icon">✕</span>
+            <p>
+              Korábbi SGLT2-gátló melletti ketoacidosis után, illetve terhesség
+              és szoptatás alatt.
+            </p>
+          </div>
+        </div>
+
+        <div class="eyebrow">Döntési pont</div>
+
+        <div class="flow-wrap">
+          <div class="flow-decision">
+            Új 2-es típusú diabetes, magas CV / vese kockázat
+          </div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-decision">SGLT2-gátló mérlegelése</div>
+
+          <!-- Elágazó nyilak -->
+          <svg
+            class="flow-split"
+            viewBox="0 0 360 46"
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <marker
+                id="arrowGood"
+                markerWidth="8"
+                markerHeight="8"
+                refX="4"
+                refY="4"
+                orient="auto"
+              >
+                <path d="M0,0 L8,4 L0,8 Z" fill="#5be37b" />
+              </marker>
+              <marker
+                id="arrowBad"
+                markerWidth="8"
+                markerHeight="8"
+                refX="4"
+                refY="4"
+                orient="auto"
+              >
+                <path d="M0,0 L8,4 L0,8 Z" fill="#ff6b57" />
+              </marker>
+            </defs>
+            <!-- induló pont középen fent -->
+            <path
+              d="M180,0 L180,14"
+              stroke="rgba(255,255,255,0.35)"
+              stroke-width="2"
+              fill="none"
+            />
+            <!-- bal ág (jó / lime) -->
+            <path
+              d="M180,14 C180,30 100,26 90,40"
+              stroke="#5be37b"
+              stroke-width="2.5"
+              fill="none"
+              marker-end="url(#arrowGood)"
+            />
+            <!-- jobb ág (kontraindikáció / korall) -->
+            <path
+              d="M180,14 C180,30 260,26 270,40"
+              stroke="#ff6b57"
+              stroke-width="2.5"
+              fill="none"
+              marker-end="url(#arrowBad)"
+            />
+          </svg>
+
+          <div class="flow-branches">
+            <div class="branch good">
+              <div class="b-icon">✓</div>
+              <div class="b-label">Ág 1 · Nincs kontraindikáció</div>
+              <div class="b-main">Metformin + SGLT2-gátló indítása</div>
+            </div>
+            <div class="branch bad">
+              <div class="b-icon">✕</div>
+              <div class="b-label">Ág 2 · Kontraindikáció fennáll</div>
+              <div class="b-sub">pl. eGFR alacsony, ketoacidosis-anamnézis</div>
+              <div class="b-alt">Alternatíva: DPP-4-gátló</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="edu-box">
+          <span class="edu-icon">💬</span>
+          <div>
+            <div class="edu-title">Betegedukáció — „Sick Day Rule"</div>
+            <p>
+              „Láz, hányás, hasmenés esetén az SGLT2-gátlót kb. 1 hétre fel kell
+              függeszteni" — egyszerű, jól megjegyezhető szabály a betegnek.
+            </p>
+          </div>
+        </div>
+
+        <div class="cta-wrap">
+          <a href="#" class="cta-btn">Olvassa el a teljes összefoglalót</a>
+          <a href="#" class="cta-btn">Vagy nézze meg a teljes előadást</a>
+        </div>
+      </div>
+
+      <div class="source-note">
+        Összefoglaló dr. Gulácsi-Bárdos Petra előadása alapján (Oktató
+        Családorvosok XXVII. <br />
+        Továbbképző Konferenciája, Siófok)
+      </div>
+
+      <footer>
+        <div class="flogo">
+          <img
+            src="images/Layer_1_footer.png"
+            width="168"
+            alt="Boehringer Ingelheim"
+            style="
+              display: block;
+              width: 168px;
+              max-width: 100%;
+              height: auto;
+              border: 0;
+            "
+          />
+          <img
+            src="images/life-forward.png"
+            width="215"
+            alt="Life forward"
+            style="
+              display: block;
+              width: 215px;
+              max-width: 100%;
+              height: auto;
+              border: 0;
+            "
+          />
+        </div>
+        <div class="footer-content">
+          <p>
+            <strong
+              >Boehringer Ingelheim RCV GmbH <br />
+              & Co KG Magyarországi Fióktelepe <br
+            /></strong>
+            1095 Budapest <br />
+            Lechner Ödön fasor 10 <br />
+            <a
+              href="https://www.boehringer-ingelheim.com/hu?BIID=%7b%7bAccount.Id%7d%7d&cid=ae:%7b%7bOrgId%7d%7d:%7b%7bApproved_Document_vod__c.Id%7d%7d:%7b%7bEmailId%7d%7d"
+              >www.boehringer-ingelheim.hu</a
+            >
+            <br /><br />
+            Alkalmazás előtt kérjük, olvassa el a teljes alkalmazási előírást.
+            Az egészségügyi szakembereket arra kérjük, hogy jelentsenek
+            bármilyen feltételezett mellékhatást a Nemzeti Népegészségügyi és
+            Gyógyszerészeti Központnak (NNGYK) a
+            <a href="https://ogyei.gov.hu/">https://ogyei.gov.hu</a> honlapon
+            található online mellékhatás-bejelentő felületen keresztül, illetve
+            a honlapról letölthető mellékhatás-bejelentő lapon vagy bármilyen
+            nem-kívánatos eseményt elküldhet a Boehringer Ingelheim
+            International GmbH magyarországi elérhetőségére:
+            <a href="mailto:pv_local_hungary@boehringer-ingelheim.com"
+              >pv_local_hungary@boehringer-ingelheim.com.</a
+            >
+            Kérjük, segítse munkánkat azáltal, hogy mellékhatás-bejelentését
+            csak egy helyre juttatja el, vagy az NNGYK-nak, vagy a Boehringer
+            Ingelheim International GmbH felé. <br /><br />
+            Adatvédelmi tájékoztató: Tájékoztatjuk, hogy az Ön személyes adatait
+            felelősen kezeljük, a hatályos jogszabályi előírásokkal összhangban
+            (különös tekintettel a GDPR-ra). Az adatkezelésre és az Ön jogaira a
+            <a
+              href="https://www.boehringer-ingelheim.com/hu/rolunk/pdf/altalanos-adatkezelesi-tajekoztato?BIID=%7B%7BAccount.Id%7D%7D&cid=ae%3A%7B%7BOrgId%7D%7D%3A%7B%7BApproved_Document_vod__c.Id%7D%7D%3A%7B%7BEmailId%7D%7D"
+              >https://www.boehringer-ingelheim.hu/adatvedelmi-szabalyzat</a
+            >
+
+            weboldalon elhelyezett mindenkori adatvédelmi szabályzat irányadó.
+            Kérdés esetén forduljon hozzánk bizalommal a
+            dataprotection.hu@boehringer-ingelheim.com e-mail címen vagy a 1095
+            Budapest, Lechner Ödön fasor 10. postacímen. <br /><br />
+            Adatvédelmi irányelvek
+            <a
+              href="https://www.boehringer-ingelheim.com/hu/rolunk/pdf/altalanos-adatkezelesi-tajekoztato?BIID=%7B%7BAccount.Id%7D%7D&cid=ae%3A%7B%7BOrgId%7D%7D%3A%7B%7BApproved_Document_vod__c.Id%7D%7D%3A%7B%7BEmailId%7D%7D"
+              >linkje</a
+            >. <br />
+            A leiratkozáshoz kérjük, kattintson
+            <a
+              href="https://t.information.boehringer-ingelheim.com/webApp/bipHuPreferences?id=%3C%=escapeUrl(cryptString(recipient.id))%%3E"
+              >ide</a
+            >.
+          </p>
+        </div>
+        <p style="color: #545555">SC-HU-07010</p>
+      </footer>
+    </div>
+  </body>
+</html>
